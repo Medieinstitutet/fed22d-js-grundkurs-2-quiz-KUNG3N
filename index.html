@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- TODO: glöm ej att byta språk här -->
+<html lang="se"> 
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/ico" href="/js-template/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projekt</title>
-    <script type="module" crossorigin src="/js-template/assets/index.288365a0.js"></script>
-    <link rel="stylesheet" href="/js-template/assets/index.09951560.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&display=swap" rel="stylesheet">    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekt-quiz</title>
+    <script type="module" crossorigin src="/js-template/assets/index.7338cedb.js"></script>
+    <link rel="stylesheet" href="/js-template/assets/index.7075ceab.css">
   </head>
   <body>
-    <main>
-      <div class="app" id="app"></div> <!-- TODO: går bra att radera -->
-      <!-- TODO: skriv din kod här, innan script-taggen -->
+    <main class="container">
+      <h1 class="start-text">START QUIZ</h1>
+
+      <input class="playerName" type="text" id="playerName" placeholder="your name please">
+
+      <button class="start-btn">LETS GOOO</button>
     </main>
 
-    <!-- TODO
+
+
+
+
+    <!--
     - Validera HTML (kopiera den renderade HTML-koden): https://validator.w3.org/#validate_by_input
     - Kontrollera tillgänglighet: https://www.a11yproject.com/checklist/ & Chrome Lighthouse/Firefox Accessibility Tools
     - Validera genererade CSS: https://jigsaw.w3.org/css-validator/#validate_by_input
