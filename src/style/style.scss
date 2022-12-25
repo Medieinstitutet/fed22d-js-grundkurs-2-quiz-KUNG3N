@@ -19,24 +19,27 @@
 :root {
   background-color: darkslategray;
 }
+.maintext{
+  font-family: 'Playfair Display', serif;
+  font-size: 10 rem;
+  margin-top: 40vh;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -50%);
+}
 
-.container {
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 10 rem;
-    text-align: center;
-  }
-
+.start {
   button {
     display: flex;
     position: fixed;
     margin: auto;
     text-align: center;
     left: 50%;
-    top: 15%;
+    top: 55%;
     transform: translate(-50%, -50%);
-    border: none;
-    
+    background-color: transparent;
   }
 }
 
@@ -46,6 +49,34 @@
   margin: auto;
   text-align: center;
   left: 50%;
-  top: 10%;
+  top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.goaway{
+visibility: hidden;
+}
+
+.firststep {
+  
+  h2{
+    display: flex;
+    position: fixed;
+    margin: auto;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  button {
+    display: flex;
+    position: fixed;
+    margin: auto;
+    text-align: center;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+  }
 }
