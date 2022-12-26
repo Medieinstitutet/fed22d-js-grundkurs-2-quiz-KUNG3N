@@ -22,7 +22,7 @@
 
 # styling
 
-* det ska finnas en knapp för att gå till nästa fråga - button
+* det ska finnas en knapp för att gå till nästa fråga - button☑️
 * med knappen så ska en automatiskt countdown finnas för att gå till nästa fråga 2 sec
 
 # ____________________________________________________________________________________
