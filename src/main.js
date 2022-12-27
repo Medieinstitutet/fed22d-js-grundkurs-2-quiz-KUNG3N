@@ -71,17 +71,16 @@ const questions = [
             "iron man",
             "your uncel steve"
         ],
-        correctAnswer: "rober downey jr"
+        correctAnswer: ["rober downey jr", "iron man"]
     },
     {
         questions: 'whats this rappers name?',
         options: [
             "kendrick lamar",
-            "k-dot",
             "kung fu kenny",
             "the goat"
         ],
-        correctAnswer: "the goat"
+        correctAnswer: ["the goat", "k-dot", "kendrick lamar", "kung fu kenny"]
     },
     {
         questions: 'what was this movies name?',
@@ -90,16 +89,18 @@ const questions = [
             "titanic",
             "jack and rose story"
         ],
-        correctAnswer: "the goat"
+        correctAnswer: "titanic"
     }
 ]
 
+const questionGroup1 = questions[0,1,2,3];
 
 /**
  * Randomizes the options for all questions
  * This function loops through the questions array and calls the randomizeOptionsForQuestion function
  * for each question
 */
+
 function randomizeOptionsForAllQuestions() { 
     // loop through the questions array
     for (let i = 0; i < questions.length; i++) {
@@ -128,13 +129,26 @@ function getARandomQuestion() {
 }
 
 let playerName = '';
-
+//question group 1
+const q1 = questions[0].questions; 
+const q2 = questions[1].questions;
+const q3 = questions[2].questions;
+const q4 = questions[3].questions;
+//question group 2
+const q5 = questions[4].questions; 
+const q6 = questions[5].questions;
+const q7 = questions[6].questions;
+//question group 3
+const q8 = questions[7].questions;
+const q9 = questions[8].questions; 
+const q10 = questions[9].questions;
 // runing the first code to start the quiz
 document.querySelector("#start-btn").addEventListener("click", startQuiz);
 
 /*first function that stores the input and makes it look professional,
 runs the alert to welcome the player and add the hidden property to the div
 then runs the second funtion firststep.*/
+
 function startQuiz() {
 
     playerName = document.getElementById("playerName").value;
@@ -153,22 +167,43 @@ function startQuiz() {
 
     firstStep();
 }
+
 /*second function that removs the hidden property from the second div to 
 show the first qwestion, then choose a random question from a random qwestionbox
 and show 3 random anweres*/
+
 function firstStep() {
     const questionIndex = getARandomQuestion();
     let answer = null;
-
+   
     randomizeOptionsForAllQuestions();
 
     document.querySelector(".firststep").classList.remove("goaway");
 
     document.querySelector("#questionNumber").textContent = "Qwestion1";
-    document.querySelector("#question").innerHTML = questions[questionIndex].questions;
+    let randomQuestion = questions[questionIndex].questions;
+    
+    document.querySelector("#question").innerHTML = randomQuestion;
+    
+    //statements to change the style of the website based on the question group
+
+    if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
+        document.querySelector("html").classList.add("test1");
+    }
+    else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
+        document.querySelector("html").classList.add("test2");
+
+    }
+    else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10){
+        document.querySelector("html").classList.add("test3");
+
+    }
+
     document.querySelector("#ans1").innerHTML = questions[questionIndex].options[0];
     document.querySelector("#ans2").innerHTML = questions[questionIndex].options[1];
     document.querySelector("#ans3").innerHTML = questions[questionIndex].options[2];
+
+    
 
     document.querySelector("#ans1").addEventListener("click", function () { 
         answer = questions[questionIndex].options[0];
@@ -179,10 +214,14 @@ function firstStep() {
     document.querySelector("#ans3").addEventListener("click", function () {
         answer = questions[questionIndex].options[2];
     });
+
+    
     // get submit button
     const submitButton = document.querySelector("#submit-btn");
+
     // add event listener to submit button
     submitButton.addEventListener("click", function () { 
         checkAnswerForQuestion(questionIndex, answer); // returns either true or false depending on if the answer is correct
-    });
+    }); 
+    
 }

@@ -16,7 +16,7 @@
 * minst 3 svar möjligheter, minst 1 rätt ☑️
 * +1 för rätt svar och -1 för fel svar på fråga tillfället
 * man ska kunna märkera flera svar som rätt ☑️
-* random svar ska visas varje gång - arryas
+* random svar ska visas varje gång - arryas☑️
 
 # ___________________________________________________________________________________
 
