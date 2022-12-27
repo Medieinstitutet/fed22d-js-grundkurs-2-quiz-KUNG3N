@@ -1,126 +1,131 @@
 // this is where the questions stored
 
-//category 1 of questions (general questions)
-const fraga1 = "Who was the Ancient Greek God of the Sun?"; // appol
-const fraga2 = "What artist has the most streams on Spotify?"; // drake
-const fraga3 = "What sports car company manufactures the 911?"; // porsche
-const fraga4 = "In what country is the Chernobyl nuclear plant located?"; //Ukraine
-//category 2 of questions (math questions)
-const fraga5 = "How many minutes are in a full week?"; // 10,080
-const fraga6 = "121 Divided by 11 is?"; // 11 , 21 , 12
-const fraga7 = "What is the Next Prime Number after 7?"; // 11
-//category 3 of questions (media questions)
-const fraga8 = "who is this person?"; // rober downey jr, iron man, your uncel steve
-const fraga9 = "whats this rappers name?"; //kendrick lamar, k-dot, kung fu kenny, the goat, all the above
-const fraga10 = "what was this movies name?"; //the titanic, titanic, jack and rose story
-
-let fragorBoxGen = [fraga1, fraga2, fraga3, fraga4];
-let fragorBoxMath = [fraga5, fraga6, fraga7];
-let fragorBoxMed = [fraga8, fraga9, fraga10];
-
-//this is where the answeres are stored
-
-//category1 of answeres (general answeres)
-const answere1ToFraga1 = "appolo";
-const answere2ToFraga1 = "hermis";
-const answere3ToFraga1 = "zoes";
-
-let answereBox1 = [answere1ToFraga1, answere2ToFraga1, answere3ToFraga1]
-
-const answere1ToFraga2 = "drake";
-const answere2ToFraga2 = "the weekend";
-const answere3ToFraga2 = "ariana grande";
-
-let answereBox2 = [answere1ToFraga2, answere2ToFraga2, answere3ToFraga2]
-
-const answere1ToFraga3 = "porche";
-const answere2ToFraga3 = "ferrari";
-const answere3ToFraga3 = "BMW";
-
-let answereBox3 = [answere1ToFraga3, answere2ToFraga3, answere3ToFraga3]
-
-const answere1ToFraga4 = "ukraine";
-const answere2ToFraga4 = "russia";
-const answere3ToFraga4 = "serbia";
-
-let answereBox4 = [answere1ToFraga4, answere2ToFraga4, answere3ToFraga4]
-
-//category1 of answeres (math answeres)
-const answere1ToFraga5 = 10.080;
-const answere2ToFraga5 = 17.000;
-const answere3ToFraga5 = 8.960;
-
-let answereBox5 = [answere1ToFraga5, answere2ToFraga5, answere3ToFraga5]
-
-const answere1ToFraga6 = 11;
-const answere2ToFraga6 = 21;
-const answere3ToFraga6 = 12;
-
-let answereBox6 = [answere1ToFraga6, answere2ToFraga6, answere3ToFraga6]
-
-const answere1ToFraga7 = 11;
-const answere2ToFraga7 = 10;
-const answere3ToFraga7 = 14;
-
-let answereBox7 = [answere1ToFraga7, answere2ToFraga7, answere3ToFraga7]
-
-//category1 of answeres (med answeres)
-const answere1ToFraga8 = "appolo";
-const answere2ToFraga8 = "hermis";
-const answere3ToFraga8 = "zoes";
-
-let answereBox8 = [answere1ToFraga8, answere2ToFraga8, answere3ToFraga8]
-
-const answere1ToFraga9 = "drake";
-const answere2ToFraga9 = "the weekend";
-const answere3ToFraga9 = "ariana grande";
-
-let answereBox9 = [answere1ToFraga9, answere2ToFraga9, answere3ToFraga9]
-
-const answere1ToFraga10 = "porche";
-const answere2ToFraga10 = "ferrari";
-const answere3ToFraga10 = "BMW";
-
-let answereBox10 = [answere1ToFraga10, answere2ToFraga10, answere3ToFraga10]
-
-// let fragoGrupper = [fragorBoxGen, fragorBoxMath, fragorBoxMed]
-
-
-// typing document essentials
-
-let playerName = '';
-
-// generate random number between 0-2 and 0-3
-let randomNumber0 = Math.floor(Math.random() * 3);
-let randomNumber1 = Math.floor(Math.random() * 4);
-
-
-// choose a random qwestiongroup
-// let randomQwestionGroup = fragoGrupper[randomNumber0];
+const questions = [
+    {
+        questions: 'Who was the Ancient Greek God of the Sun?',
+        options: [
+            "Apollo",
+            "Hermis",
+            "Zoes"
+        ],
+        correctAnswer: "Apollo"
+    },
+    {
+        questions: 'What artist has the most streams on Spotify?',
+        options: [
+            "Drake",
+            "The Weekend",
+            "Ariana Grande"
+        ],
+        correctAnswer: "Drake"
+    },
+    {
+        questions: 'What sports car company manufactures the 911?',
+        options: [
+            "Porsche",
+            "Ferrari",
+            "BMW"
+        ],
+        correctAnswer: "Porsche"
+    },
+    {
+        questions: 'In what country is the Chernobyl nuclear plant located?',
+        options: [
+            "Ukraine",
+            "Russia",
+            "Serbia"
+        ],
+        correctAnswer: "Ukraine"
+    },
+    {
+        questions: 'How many minutes are in a full week?',
+        options: [
+            "10,080",
+            "17,000",
+            "8,960"
+        ],
+        correctAnswer: "10,080"
+    },
+    {
+        questions: '121 Divided by 11 is?',
+        options: [
+            "11",
+            "21",
+            "12"
+        ],
+        correctAnswer: "11"
+    },
+    {
+        questions: 'What is the Next Prime Number after 7?',
+        options: [
+            "11",
+            "10",
+            "14"
+        ],
+        correctAnswer: "11"
+    },
+    {
+        questions: 'who is this person?',
+        options: [
+            "rober downey jr",
+            "iron man",
+            "your uncel steve"
+        ],
+        correctAnswer: "rober downey jr"
+    },
+    {
+        questions: 'whats this rappers name?',
+        options: [
+            "kendrick lamar",
+            "k-dot",
+            "kung fu kenny",
+            "the goat"
+        ],
+        correctAnswer: "the goat"
+    },
+    {
+        questions: 'what was this movies name?',
+        options: [
+            "the titanic",
+            "titanic",
+            "jack and rose story"
+        ],
+        correctAnswer: "the goat"
+    }
+]
 
 
-// choose a random qwestion from Math box
-let randomQwestion0 = fragorBoxMath[randomNumber0];
-
-// choose a random qwestion from Media box
-let randomQwestion1 = fragorBoxMed[randomNumber0];
-
-// choose a random qwestion from General box
-let randomQwestion2 = fragorBoxGen[randomNumber1];
-
-
-console.log(randomQwestion2);
-
-//a condition to display random qwestions from the biggist group 
-// if (randomQwestionGroup === fragorBoxGen) {
-//     console.log(randomQwestion1);
-// }else {
-//     console.log(randomQwestion0);
-// }
-
-
+/**
+ * Randomizes the options for all questions
+ * This function loops through the questions array and calls the randomizeOptionsForQuestion function
+ * for each question
+*/
+function randomizeOptionsForAllQuestions() { 
+    // loop through the questions array
+    for (let i = 0; i < questions.length; i++) {
+        const options = questions[i].options; // get the options for the current question
+        const newOptions = [] // create a new array to store the randomized options
+        while (options.length > 0) { // loop through the options array
+            const randomIndex = Math.floor(Math.random() * options.length); // get a random index
+            newOptions.push(options[randomIndex]); // add the option at the random index to the new array
+            options.splice(randomIndex, 1); // remove the option at the random index from the options array
+        }
+        questions[i].options = newOptions; // set the options for the current question to the new array
+    }
+}
 
 
+function checkAnswerForQuestion(index, answer) {
+    return questions[index].correctAnswer === answer;
+}
+
+function getARandomQuestion() {
+    let randomIndex = Math.floor(Math.random() * questions.length); // get a random index
+    if (randomIndex >= questions.length || randomIndex < 0) { // check if the random index is out of bounds
+        return null; // return null if it is
+    }
+    return randomIndex; // return the random index
+}
 
 // runing the first code to start the quiz
 document.querySelector("#start-btn").addEventListener("click", startQuiz);
@@ -150,13 +155,32 @@ function startQuiz() {
 show the first qwestion, then choose a random question from a random qwestionbox
 and show 3 random anweres*/
 function firstStep() {
+    const questionIndex = getARandomQuestion();
+    let answer = null;
+
+    randomizeOptionsForAllQuestions();
 
     document.querySelector(".firststep").classList.remove("goaway");
 
     document.querySelector("#questionNumber").textContent = "Qwestion1";
-    document.querySelector("#question").innerHTML = randomQwestion0;
-    document.querySelector("#ans1").innerHTML = answere1ToFraga2;
+    document.querySelector("#question").innerHTML = questions[questionIndex].questions;
+    document.querySelector("#ans1").innerHTML = questions[questionIndex].options[0];
+    document.querySelector("#ans2").innerHTML = questions[questionIndex].options[1];
+    document.querySelector("#ans3").innerHTML = questions[questionIndex].options[2];
 
-
-    // document.querySelector("#qestion").textContent = 
+    document.querySelector("#ans1").addEventListener("click", function () { 
+        answer = questions[questionIndex].options[0];
+    });
+    document.querySelector("#ans2").addEventListener("click", function () {
+        answer = questions[questionIndex].options[1];
+    });
+    document.querySelector("#ans3").addEventListener("click", function () {
+        answer = questions[questionIndex].options[2];
+    });
+    // get submit button
+    const submitButton = document.querySelector("#submit-btn");
+    // add event listener to submit button
+    submitButton.addEventListener("click", function () { 
+        checkAnswerForQuestion(questionIndex, answer); // returns either true or false depending on if the answer is correct
+    });
 }
