@@ -127,6 +127,8 @@ function getARandomQuestion() {
     return randomIndex; // return the random index
 }
 
+let playerName = '';
+
 // runing the first code to start the quiz
 document.querySelector("#start-btn").addEventListener("click", startQuiz);
 
@@ -140,7 +142,7 @@ function startQuiz() {
     let slicedPlayerName = playerName.slice(0,1);
     slicedPlayerName = slicedPlayerName.toLocaleUpperCase();
 
-    let restOfPlayerName = playerName.slice(1,playerName.length);
+    let restOfPlayerName = playerName.slice(1, playerName.length);
     restOfPlayerName = restOfPlayerName.toLocaleLowerCase();
 
     let newPlayerName = slicedPlayerName + restOfPlayerName;
