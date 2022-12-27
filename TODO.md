@@ -4,7 +4,7 @@
 
 * 10st frågor - strängar ☑️
 * olika frågokattekorier - arrays ☑️
-* olika stiler på olika kattegorier - css
+* olika stiler på olika kattegorier - css ☑️
 * max tid för varje fråga 60 sec räknar ner åt
 * max tid för hela spelet som räknar ner från början av slepet 10 min
 * random frågor ska visas varje gång - arrays☑️
