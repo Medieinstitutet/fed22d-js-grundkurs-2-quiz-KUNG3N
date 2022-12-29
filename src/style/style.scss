@@ -45,6 +45,19 @@
   linear-gradient(0, transparent 50%, rgba(255, 255, 255, .19) 50%);
 }
 
+.countdown{
+  width: 25%;
+  height: 5%;
+  justify-content: center;
+  font-size: 2rem;
+  background-color: transparent;
+  position: absolute;
+  display: flex;
+  margin: auto;
+  right: 0%;
+  color: black;
+}
+
 .maintext{
   font-family: monospace, sans-serif;
   font-size: 4rem;
@@ -293,6 +306,7 @@ visibility: hidden;
   }
   
   .answeres:focus {
+    background-color: transparent;
     box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
   }
   
@@ -304,6 +318,7 @@ visibility: hidden;
   .answeres:active {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
+    background-color: transparent;
   }
   
   
@@ -421,6 +436,7 @@ visibility: hidden;
   }
   
   .answeres:focus {
+    background-color: transparent;
     box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
   }
   
@@ -432,6 +448,7 @@ visibility: hidden;
   .answeres:active {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
+    background-color: transparent;
   }
   
   
@@ -549,6 +566,7 @@ visibility: hidden;
   }
   
   .answeres:focus {
+    background-color: transparent;
     box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
   }
   
@@ -560,6 +578,7 @@ visibility: hidden;
   .answeres:active {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
+    background-color: transparent;
   }
   
   

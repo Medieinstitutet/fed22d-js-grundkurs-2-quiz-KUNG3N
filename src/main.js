@@ -202,12 +202,38 @@ function updateQuestionAndAnswers (questionIndex) {
 
 }
 
-let questionNumber = 1;
+
 let questionIndex = getARandomQuestion();
 let answer = null;
 
 function firstStep() {
-    
+    document.querySelector("#countdown-timer").classList.remove("goaway");
+
+    const COUNTDOWN_DURATION = 10;
+
+    const countdownTimer = document.querySelector("#countdown-timer");
+
+    let countdownTime = COUNTDOWN_DURATION * 60;
+
+    const countdownInterval = setInterval(() => {
+
+        countdownTime--;
+
+        const minutes = Math.floor(countdownTime / 60);
+        const seconds = countdownTime % 60;
+
+        countdownTimer.textContent = `${minutes}:${seconds}`;
+
+        if(countdownTime <= 0) {
+            clearInterval(countdownInterval);
+        
+
+            countdownTimer.textContent = "Time is up!";
+
+        }
+    },   1000);
+
+    let questionNumber = 1;
    
     randomizeOptionsForAllQuestions();
 
@@ -256,15 +282,16 @@ function firstStep() {
     // get submit button
      
     
-
+    
     const submitButton = document.querySelector("#submit");
 
     const result = function (){
+        
         questionNumber++;
         const checkResult = checkAnswerForQuestion(questionIndex, answer);
         console.log(checkResult); 
         
-        
+        document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
         // move to next question
         
         // check if there are more questions
@@ -277,12 +304,14 @@ function firstStep() {
             updateQuestionAndAnswers(questionIndex);
         }
         
+        
         // else {
 
         //     // no more questions, display final result
         //      displayFinalResult();
         //  }
     }
+    
 
     // add event listener to submit button
     submitButton.addEventListener("click", result);
