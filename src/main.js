@@ -126,7 +126,6 @@ function checkAnswerForQuestion(index, answer) {
 
 function getARandomQuestion() {
     let randomIndex = Math.floor(Math.random() * questions.length); // get a random index
-    console.log(randomIndex);
     if (randomIndex >= questions.length || randomIndex < 0) { // check if the random index is out of bounds
         return null; // return null if it is
     }
@@ -175,30 +174,48 @@ function startQuiz() {
     firstStep();
 }
 
+function displayFinalResult() {
+    
+}
+
 
 
 /*second function that removs the hidden property from the second div to 
 show the first qwestion, then choose a random question from a random qwestionbox
 and show 3 random anweres*/
 
-//assining the random question 
+let answeredQuestions = [];
 
-function updateQuestionAndAnswers (questionIndex) {
-        
-    let whatQuestionDoWeHave = questions[questionIndex];
+function updateQuestionAndAnswers () {
 
-    const QuestionPlace = document.querySelector("#question");
-    QuestionPlace.innerHTML = whatQuestionDoWeHave.questions;
+// check if all questions have been answered
 
-    const ans1Button = document.querySelector("#ans1");
-    ans1Button.innerHTML = questions[questionIndex].options[0];
+  if (answeredQuestions.length === questions.length) {
 
-    const ans2Button = document.querySelector("#ans2");
-    ans2Button.innerHTML = questions[questionIndex].options[1];
+// all questions have been answered, display the final result
 
-    const ans3Button = document.querySelector("#ans3");
-    ans3Button.innerHTML = questions[questionIndex].options[2];
-       
+    displayFinalResult();
+    return;
+  }
+
+// select a random question that has not been answered
+
+  let randomIndex;
+
+  do {
+    randomIndex = Math.floor(Math.random() * questions.length);
+  } while (answeredQuestions.includes(randomIndex));
+  const randomQuestion = questions[randomIndex].questions;
+
+// add the index of the current question to the answeredQuestions array
+
+    answeredQuestions.push(randomIndex);
+
+    document.querySelector("#question").textContent = randomQuestion;
+
+    document.querySelector("#ans1").textContent = questions[randomIndex].options[0];
+    document.querySelector("#ans2").textContent = questions[randomIndex].options[1];
+    document.querySelector("#ans3").textContent = questions[randomIndex].options[2];
 
 }
 
@@ -296,20 +313,15 @@ function firstStep() {
         
         // check if there are more questions
         if (questionIndex < questions.length) {
-            // update questionIndex to the index of the next question
-            
-           
-            questionIndex++;
             // update question and answer options
             updateQuestionAndAnswers(questionIndex);
-        }
-        
-        
-        // else {
+        }else {
 
-        //     // no more questions, display final result
-        //      displayFinalResult();
-        //  }
+        // no more questions, display final result
+
+        displayFinalResult();
+
+        }
     }
     
 
