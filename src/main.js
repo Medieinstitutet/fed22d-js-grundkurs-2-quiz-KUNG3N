@@ -71,7 +71,7 @@ const questions = [
             "iron man",
             "your uncel steve"
         ],
-        correctAnswer: ["rober downey jr", "iron man"]
+        correctAnswer: "rober downey jr"
     },
     {
         questions: 'whats this rappers name?',
@@ -80,7 +80,7 @@ const questions = [
             "kung fu kenny",
             "the goat"
         ],
-        correctAnswer: ["the goat", "k-dot", "kendrick lamar", "kung fu kenny"]
+        correctAnswer: "the goat"
     },
     {
         questions: 'what was this movies name?',
@@ -92,8 +92,6 @@ const questions = [
         correctAnswer: "titanic"
     }
 ]
-
-const questionGroup1 = questions[0,1,2,3];
 
 /**
  * Randomizes the options for all questions
@@ -116,17 +114,26 @@ function randomizeOptionsForAllQuestions() {
 }
 
 
+
 function checkAnswerForQuestion(index, answer) {
-    return questions[index].correctAnswer === answer;
+    if(questions[index].correctAnswer === answer) {
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 function getARandomQuestion() {
     let randomIndex = Math.floor(Math.random() * questions.length); // get a random index
+    console.log(randomIndex);
     if (randomIndex >= questions.length || randomIndex < 0) { // check if the random index is out of bounds
         return null; // return null if it is
     }
     return randomIndex; // return the random index
+    
 }
+
 
 let playerName = '';
 //question group 1
@@ -168,34 +175,62 @@ function startQuiz() {
     firstStep();
 }
 
+
+
 /*second function that removs the hidden property from the second div to 
 show the first qwestion, then choose a random question from a random qwestionbox
 and show 3 random anweres*/
 
+//assining the random question 
+
+function updateQuestionAndAnswers (questionIndex) {
+        
+    let whatQuestionDoWeHave = questions[questionIndex];
+
+    const QuestionPlace = document.querySelector("#question");
+    QuestionPlace.innerHTML = whatQuestionDoWeHave.questions;
+
+    const ans1Button = document.querySelector("#ans1");
+    ans1Button.innerHTML = questions[questionIndex].options[0];
+
+    const ans2Button = document.querySelector("#ans2");
+    ans2Button.innerHTML = questions[questionIndex].options[1];
+
+    const ans3Button = document.querySelector("#ans3");
+    ans3Button.innerHTML = questions[questionIndex].options[2];
+       
+
+}
+
+let questionNumber = 1;
+let questionIndex = getARandomQuestion();
+let answer = null;
+
 function firstStep() {
-    const questionIndex = getARandomQuestion();
-    let answer = null;
+    
    
     randomizeOptionsForAllQuestions();
 
     document.querySelector(".firststep").classList.remove("goaway");
+    
 
-    document.querySelector("#questionNumber").textContent = "Qwestion1";
+    document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
     let randomQuestion = questions[questionIndex].questions;
+    
     
     document.querySelector("#question").innerHTML = randomQuestion;
     
     //statements to change the style of the website based on the question group
 
     if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
-        document.querySelector("html").classList.add("test1");
+        document.querySelector("html").classList.add("questiongroup1");
     }
     else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
-        document.querySelector("html").classList.add("test2");
+        document.querySelector("html").classList.add("questiongroup2");
 
     }
     else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10){
-        document.querySelector("html").classList.add("test3");
+        document.querySelector("html").classList.add("questiongroup3");
 
     }
 
@@ -215,13 +250,42 @@ function firstStep() {
         answer = questions[questionIndex].options[2];
     });
 
+   
     
+    console.log(questionIndex);
     // get submit button
-    const submitButton = document.querySelector("#submit-btn");
+     
+    
+
+    const submitButton = document.querySelector("#submit");
+
+    const result = function (){
+        questionNumber++;
+        const checkResult = checkAnswerForQuestion(questionIndex, answer);
+        console.log(checkResult); 
+        
+        
+        // move to next question
+        
+        // check if there are more questions
+        if (questionIndex < questions.length) {
+            // update questionIndex to the index of the next question
+            
+           
+            questionIndex++;
+            // update question and answer options
+            updateQuestionAndAnswers(questionIndex);
+        }
+        
+        // else {
+
+        //     // no more questions, display final result
+        //      displayFinalResult();
+        //  }
+    }
 
     // add event listener to submit button
-    submitButton.addEventListener("click", function () { 
-        checkAnswerForQuestion(questionIndex, answer); // returns either true or false depending on if the answer is correct
-    }); 
-    
+    submitButton.addEventListener("click", result);
 }
+
+
