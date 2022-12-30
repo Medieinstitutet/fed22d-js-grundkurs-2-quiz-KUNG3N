@@ -248,19 +248,10 @@ function updateQuestionAndAnswers () {
 /*second function that removs the hidden property from the second div to 
 show the first qwestion, then choose a random question from a random qwestionbox
 and show 3 random anweres*/
-
-
-
-
-
-function firstStep() {
-    document.querySelector("#countdown-timer").classList.remove("goaway");
-
-    const COUNTDOWN_DURATION_2 = 60;
+const COUNTDOWN_DURATION_2 = 60;
 let countdownTime2 = COUNTDOWN_DURATION_2;
 let questionIndex = getARandomQuestion();
 let answer = null;
-
 const countdownInterval2 = setInterval(() => {
     countdownTime2--;
 
@@ -273,6 +264,12 @@ if (countdownTime2 <= 0) {
 
 }
 }, 1000);
+
+
+
+
+function firstStep() {
+    document.querySelector("#countdown-timer").classList.remove("goaway");
 
     const COUNTDOWN_DURATION = 10;
 
