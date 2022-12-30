@@ -113,7 +113,7 @@ let questions = [
         options: [
             "the titanic",
             "titanic",
-            "jack and rose story"
+            "jack and rose"
         ],
         correctAnswer: "titanic"
     }
