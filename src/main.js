@@ -1,6 +1,32 @@
 // this is where the questions stored
 
-const questions = [
+let currentScore = 0;
+let questionNumber = 1;
+
+
+const countdownTimer2 = document.querySelector("#countdown-timer-2");
+
+let countdownInterval2;
+
+const startCountdownInterval2 = () => {
+countdownTime2 = COUNTDOWN_DURATION_2;
+
+clearInterval(countdownInterval2);
+
+countdownInterval2 = setInterval(() => {
+countdownTime2--;
+
+countdownTimer2.textContent = `Time left: ${countdownTime2}`;
+
+    if (countdownTime2 <= 0) {
+    clearInterval(countdownInterval2);
+
+    countdownTimer2.textContent = "Time is up!";
+    }
+    }, 1000);
+};    
+
+let questions = [
     {
         questions: 'Who was the Ancient Greek God of the Sun?',
         options: [
@@ -114,12 +140,21 @@ function randomizeOptionsForAllQuestions() {
 }
 
 function checkAnswerForQuestion(index, answer) {
+    console.log(questions[index].correctAnswer, answer)
+
+    let res = true;
     if(questions[index].correctAnswer === answer) {
-        return true;
+        currentScore++;
     }
     else{
-        return false;
+        if (currentScore > 0) {
+            currentScore--;
+        }
+        res = false;
     }
+
+    document.getElementById("highscore").innerHTML = currentScore;
+    return res;
 }
 
 function getARandomQuestion() {
@@ -127,8 +162,18 @@ function getARandomQuestion() {
     if (randomIndex >= questions.length || randomIndex < 0) { // check if the random index is out of bounds
         return null; // return null if it is
     }
-    return randomIndex; // return the random index
-    
+    return randomIndex; // return the random index  
+}
+
+function randomizeQuestions(){
+    const currQuestions = questions;
+    const randomQuestions = []
+    while (currQuestions.length > 0) { // loop through the options array
+        const randomIndex = Math.floor(Math.random() * currQuestions.length); // get a random index
+        randomQuestions.push(currQuestions[randomIndex]); // add the option at the random index to the new array
+        currQuestions.splice(randomIndex, 1); // remove the option at the random index from the options array
+    }
+    questions = randomQuestions;
 }
 
 let playerName = '';
@@ -158,6 +203,11 @@ function startQuiz() {
 
     playerName = document.getElementById("playerName").value;
 
+    if(playerName.length === 0){
+        alert("Please provide a name, we want to track you :)")
+        return
+    }
+
     let slicedPlayerName = playerName.slice(0,1);
     slicedPlayerName = slicedPlayerName.toLocaleUpperCase();
 
@@ -181,49 +231,35 @@ function startQuiz() {
 // move to next question
 let answeredQuestions = [];
 
-function updateQuestionAndAnswers () {
+function updateQuestionAndAnswers(index) {
 
-// check if all questions have been answered
+    // check if all questions have been answered
+    if (answeredQuestions.length === questions.length) return;
 
-  if (answeredQuestions.length === questions.length) {
 
-// all questions have been answered, display the final result
+    // add the index of the current question to the answeredQuestions array
+    answeredQuestions.push(index);
 
-    displayFinalResult();
-    return;
-  }
+    const question = questions[index].questions;
 
-// select a random question that has not been answered
+    document.querySelector("#question").textContent = question;
 
-  let randomIndex;
-
-  do {
-    randomIndex = Math.floor(Math.random() * questions.length);
-  } while (answeredQuestions.includes(randomIndex));
-  const randomQuestion = questions[randomIndex].questions;
-
-// add the index of the current question to the answeredQuestions array
-
-    answeredQuestions.push(randomIndex);
-
-    document.querySelector("#question").textContent = randomQuestion;
-
-    document.querySelector("#ans1").textContent = questions[randomIndex].options[0];
-    document.querySelector("#ans2").textContent = questions[randomIndex].options[1];
-    document.querySelector("#ans3").textContent = questions[randomIndex].options[2];
+    document.querySelector("#ans1").textContent = questions[index].options[0];
+    document.querySelector("#ans2").textContent = questions[index].options[1];
+    document.querySelector("#ans3").textContent = questions[index].options[2];
 
     //showing respectiv pics to respective questions
-    if (randomQuestion === q8) {
+    if (question === q8) {
         document.querySelector(".ironman").classList.remove("goaway");
         document.querySelector(".kendrick").classList.add("disappear");
         document.querySelector(".titanic").classList.add("disappear");
     }
-    if (randomQuestion === q9) {
+    if (question === q9) {
         document.querySelector(".kendrick").classList.remove("goaway");
         document.querySelector(".ironman").classList.add("disappear");
         document.querySelector(".titanic").classList.add("disappear"); 
     }
-    if (randomQuestion === q10) {
+    if (question === q10) {
         document.querySelector(".titanic").classList.remove("goaway");
         document.querySelector(".ironman").classList.add("disappear");
         document.querySelector(".kendrick").classList.add("disappear");
@@ -233,11 +269,11 @@ function updateQuestionAndAnswers () {
 
     document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
 
-    if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
+    if (question === q1 || question === q2 || question === q3 || question === q4) {
         document.querySelector("html").classList.add("questiongroup1");
-      } else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
+      } else if (question === q5 || question === q6 || question === q7) {
         document.querySelector("html").classList.add("questiongroup2");
-      } else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10) {
+      } else if (question === q8 || question === q9 || question === q10) {
         document.querySelector("html").classList.add("questiongroup3");
       }
 
@@ -250,25 +286,30 @@ show the first qwestion, then choose a random question from a random qwestionbox
 and show 3 random anweres*/
 const COUNTDOWN_DURATION_2 = 60;
 let countdownTime2 = COUNTDOWN_DURATION_2;
-let questionIndex = getARandomQuestion();
+let questionIndex = 0;
+
 let answer = null;
-const countdownInterval2 = setInterval(() => {
-    countdownTime2--;
+// const countdownInterval2 = setInterval(() => {
+//     countdownTime2--;
 
-countdownTimer2.textContent = `Time left: ${countdownTime2}`;
+// countdownTimer2.textContent = `Time left: ${countdownTime2}`;
 
-if (countdownTime2 <= 0) {
-    clearInterval(countdownInterval2);
+// if (countdownTime2 <= 0) {
+//     clearInterval(countdownInterval2);
 
-    countdownTimer2.textContent = "Time is up!";
+//     countdownTimer2.textContent = "Time is up!";
 
-}
-}, 1000);
+// }
+// }, 1000);
 
 
 
 
 function firstStep() {
+    randomizeQuestions();
+    questionIndex = 0;
+    questionNumber = 1;
+
     document.querySelector("#countdown-timer").classList.remove("goaway");
 
     const COUNTDOWN_DURATION = 10;
@@ -297,16 +338,7 @@ function firstStep() {
 
     document.querySelector("#countdown-timer-2").classList.remove("goaway");
 
-    
-
-    const countdownTimer2 = document.querySelector("#countdown-timer-2");
-
-    
-
-    
-
-    let questionNumber = 0;
-   
+       
     randomizeOptionsForAllQuestions();
 
     document.querySelector(".firststep").classList.remove("goaway");
@@ -348,89 +380,38 @@ function firstStep() {
         document.querySelector("html").classList.add("questiongroup3");
 
     }
-     
-    
-    // get submit button
-    const submitButton = document.querySelector("#submit");
-
-
-    let countdownInterval2;
-
-    const startCountdownInterval2 = () => {
-    countdownTime2 = COUNTDOWN_DURATION_2;
-
-    clearInterval(countdownInterval2);
-
-    countdownInterval2 = setInterval(() => {
-    countdownTime2--;
-
-    countdownTimer2.textContent = `Time left: ${countdownTime2}`;
-
-        if (countdownTime2 <= 0) {
-        clearInterval(countdownInterval2);
-
-        countdownTimer2.textContent = "Time is up!";
-        }
-        }, 1000);
-    };
-
-    
-
-//     // check the player's answer
-//     function checkAnswer() {
-//     // check if the answer is correct
-//     if (questions[questionIndex].correctAnswer === answer) {
-//         // increment the score by 1
-//         score++;
-//     } else {
-//         // decrement the score by 1
-//         score--;
-//     }
-// }
-
-
-
-
-
-    const result = function (){
-        questionNumber++;
-        const checkResult = checkAnswerForQuestion(questionIndex, answer);
-        console.log(checkResult); 
-        
-        document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
-
-        startCountdownInterval2();
-
-        document.querySelector(".ironman").classList.add("goaway");
-        document.querySelector(".kendrick").classList.add("goaway");
-        document.querySelector(".titanic").classList.add("goaway");
-
-        
-        // check if there are more questions
-        if (questionIndex < questions.length) {
-            // update question and answer options
-            updateQuestionAndAnswers(questionIndex);
-            
-        }else {
-
-        // no more questions, display final result
-        displayFinalResult();
-
-        // stop countdown timer
-        clearInterval(countdownInterval);
-        }
-    }
-    
-
-    // add event listener to submit button
-    submitButton.addEventListener("click", result);
-    
-    
-   
 }
 
-let score = 0; // score tracker
+ function submit (){
+    questionNumber++;
+    
+    const checkResult = checkAnswerForQuestion(questionIndex, answer);
+    console.log(checkResult); 
+    
+    questionIndex++;
 
+    document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
+
+    startCountdownInterval2();
+
+    document.querySelector(".ironman").classList.add("goaway");
+    document.querySelector(".kendrick").classList.add("goaway");
+    document.querySelector(".titanic").classList.add("goaway");
+
+    // check if there are more questions
+    if (questionIndex < questions.length) {
+        // update question and answer options
+        updateQuestionAndAnswers(questionIndex);
+        
+    }else {
+
+    // no more questions, display final result
+    displayFinalResult();
+
+    // stop countdown timer
+    clearInterval(countdownInterval);
+    }
+}
 
 
 // const numCorrectAnswers = answer.filter((answer) => answer.isCorrect).length;
@@ -441,9 +422,6 @@ function displayFinalResult() {
     document.querySelector("#countdown-timer-2").classList.add("goaway");
     document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
     document.querySelector(".final").classList.remove("goaway");
-
-    // document.querySelector("#highscore").innerHTML = score;
-
 }
 
 
@@ -451,20 +429,16 @@ function displayFinalResult() {
 function repeat () {
     document.querySelector(".final").classList.add("goaway");
 
-    playerName = "";
-
     playerName = prompt("Please enter your name:");
 
     alert("Hello " + playerName + " lets go again!")
 
+    if(!playerName || playerName.length === 0){
+        repeat();
+    }
 
-
-
-    startQuiz();
+    firstStep();
 }
 
 document.querySelector("#repeat").addEventListener("click", repeat)
-
-
-
-
+document.querySelector("#submit").addEventListener("click", submit);
