@@ -66,11 +66,11 @@ let questions = [
     {
         questions: 'How many minutes are in a full week?',
         options: [
-            10.080,
-            17.000,
-            8.960
+            "10.080",
+            "17.000",
+            "8.960"
         ],
-        correctAnswer: 10.080
+        correctAnswer: "10.080"
     },
     {
         questions: '121 Divided by' +  11 + 'is?',
@@ -281,29 +281,15 @@ function updateQuestionAndAnswers(index) {
 
 }
 
-/*second function that removs the hidden property from the second div to 
-show the first qwestion, then choose a random question from a random qwestionbox
-and show 3 random anweres*/
 const COUNTDOWN_DURATION_2 = 60;
 let countdownTime2 = COUNTDOWN_DURATION_2;
 let questionIndex = 0;
 
 let answer = null;
-// const countdownInterval2 = setInterval(() => {
-//     countdownTime2--;
 
-// countdownTimer2.textContent = `Time left: ${countdownTime2}`;
-
-// if (countdownTime2 <= 0) {
-//     clearInterval(countdownInterval2);
-
-//     countdownTimer2.textContent = "Time is up!";
-
-// }
-// }, 1000);
-
-
-
+/*second function that removs the hidden property from the second div to 
+show the first qwestion, then choose a random question from a random qwestionbox
+and show 3 random anweres*/
 
 function firstStep() {
     randomizeQuestions();
@@ -349,14 +335,10 @@ function firstStep() {
     
     
     document.querySelector("#question").innerHTML = randomQuestion;
-    
-    //statements to change the style of the website based on the question group
 
     document.querySelector("#ans1").innerHTML = questions[questionIndex].options[0];
     document.querySelector("#ans2").innerHTML = questions[questionIndex].options[1];
     document.querySelector("#ans3").innerHTML = questions[questionIndex].options[2];
-
-    
 
     document.querySelector("#ans1").addEventListener("click", function () { 
         answer = questions[questionIndex].options[0];
@@ -386,7 +368,6 @@ function firstStep() {
     questionNumber++;
     
     const checkResult = checkAnswerForQuestion(questionIndex, answer);
-    console.log(checkResult); 
     
     questionIndex++;
 
