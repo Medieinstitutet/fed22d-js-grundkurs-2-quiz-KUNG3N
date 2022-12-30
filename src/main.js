@@ -403,10 +403,6 @@ function displayFinalResult() {
     document.querySelector("#countdown-timer-2").classList.add("goaway");
     document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
 
-    document.querySelector(".ironman").classList.add("goaway");
-    document.querySelector(".kendrick").classList.add("goaway"); 
-    document.querySelector(".titanic").classList.add("goaway");
-
 }
 
 
