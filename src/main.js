@@ -113,8 +113,6 @@ function randomizeOptionsForAllQuestions() {
     }
 }
 
-
-
 function checkAnswerForQuestion(index, answer) {
     if(questions[index].correctAnswer === answer) {
         return true;
@@ -132,7 +130,6 @@ function getARandomQuestion() {
     return randomIndex; // return the random index
     
 }
-
 
 let playerName = '';
 //question group 1
@@ -174,14 +171,6 @@ function startQuiz() {
     firstStep();
 }
 
-function displayFinalResult() {
-
-}
-
-
-
-
-
 // move to next question
 let answeredQuestions = [];
 
@@ -215,6 +204,17 @@ function updateQuestionAndAnswers () {
     document.querySelector("#ans1").textContent = questions[randomIndex].options[0];
     document.querySelector("#ans2").textContent = questions[randomIndex].options[1];
     document.querySelector("#ans3").textContent = questions[randomIndex].options[2];
+
+    //showing respectiv pics to respective questions
+    if (randomQuestion === q8) {
+        document.querySelector(".ironman").classList.remove("goaway");
+    }
+    if (randomQuestion === q9) {
+        document.querySelector(".kendrick").classList.remove("goaway"); 
+    }
+    if (randomQuestion === q10) {
+        document.querySelector(".titanic").classList.remove("goaway");
+    }
 
     //removing the old styles before implementing new ones
 
@@ -290,7 +290,7 @@ function firstStep() {
 
     
 
-    let questionNumber = 1;
+    let questionNumber = 0;
    
     randomizeOptionsForAllQuestions();
 
@@ -365,7 +365,13 @@ function firstStep() {
         console.log(checkResult); 
         
         document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
+
         startCountdownInterval2();
+
+        document.querySelector(".ironman").classList.add("goaway");
+        document.querySelector(".kendrick").classList.add("goaway");
+        document.querySelector(".titanic").classList.add("goaway");
+
         
         // check if there are more questions
         if (questionIndex < questions.length) {
@@ -389,6 +395,18 @@ function firstStep() {
     const numCorrectAnswers = answer.filter((answer) => answer.isCorrect).length;
 
     console.log(numCorrectAnswers);
+}
+
+function displayFinalResult() {
+    document.querySelector(".firststep").classList.add("goaway");
+    document.querySelector("#countdown-timer").classList.add("goaway");
+    document.querySelector("#countdown-timer-2").classList.add("goaway");
+    document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
+
+    document.querySelector(".ironman").classList.add("goaway");
+    document.querySelector(".kendrick").classList.add("goaway"); 
+    document.querySelector(".titanic").classList.add("goaway");
+
 }
 
 
