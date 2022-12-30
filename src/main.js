@@ -175,15 +175,14 @@ function startQuiz() {
 }
 
 function displayFinalResult() {
-    
+
 }
 
 
 
-/*second function that removs the hidden property from the second div to 
-show the first qwestion, then choose a random question from a random qwestionbox
-and show 3 random anweres*/
 
+
+// move to next question
 let answeredQuestions = [];
 
 function updateQuestionAndAnswers () {
@@ -217,11 +216,42 @@ function updateQuestionAndAnswers () {
     document.querySelector("#ans2").textContent = questions[randomIndex].options[1];
     document.querySelector("#ans3").textContent = questions[randomIndex].options[2];
 
+    //removing the old styles before implementing new ones
+
+    document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
+
+    if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
+        document.querySelector("html").classList.add("questiongroup1");
+      } else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
+        document.querySelector("html").classList.add("questiongroup2");
+      } else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10) {
+        document.querySelector("html").classList.add("questiongroup3");
+      }
+
+    countdownTime2 = COUNTDOWN_DURATION_2;
+
 }
 
+/*second function that removs the hidden property from the second div to 
+show the first qwestion, then choose a random question from a random qwestionbox
+and show 3 random anweres*/
 
 let questionIndex = getARandomQuestion();
 let answer = null;
+const countdownInterval2 = setInterval(() => {
+    countdownTime2--;
+
+countdownTimer2.textContent = `Time left: ${countdownTime2}`;
+
+if (countdownTime2 <= 0) {
+    clearInterval(countdownInterval2);
+
+    countdownTimer2.textContent = "Time is up!";
+
+}
+}, 1000);
+
+
 
 function firstStep() {
     document.querySelector("#countdown-timer").classList.remove("goaway");
@@ -239,7 +269,7 @@ function firstStep() {
         const minutes = Math.floor(countdownTime / 60);
         const seconds = countdownTime % 60;
 
-        countdownTimer.textContent = `${minutes}:${seconds}`;
+        countdownTimer.textContent = `QUIZ Time remaining: ${minutes}:${seconds}`;
 
         if(countdownTime <= 0) {
             clearInterval(countdownInterval);
@@ -249,6 +279,16 @@ function firstStep() {
 
         }
     },   1000);
+
+    document.querySelector("#countdown-timer-2").classList.remove("goaway");
+
+    const COUNTDOWN_DURATION_2 = 60;
+
+    const countdownTimer2 = document.querySelector("#countdown-timer-2");
+
+    let countdownTime2 = COUNTDOWN_DURATION_2;
+
+    
 
     let questionNumber = 1;
    
@@ -264,18 +304,6 @@ function firstStep() {
     document.querySelector("#question").innerHTML = randomQuestion;
     
     //statements to change the style of the website based on the question group
-
-    if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
-        document.querySelector("html").classList.add("questiongroup1");
-    }
-    else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
-        document.querySelector("html").classList.add("questiongroup2");
-
-    }
-    else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10){
-        document.querySelector("html").classList.add("questiongroup3");
-
-    }
 
     document.querySelector("#ans1").innerHTML = questions[questionIndex].options[0];
     document.querySelector("#ans2").innerHTML = questions[questionIndex].options[1];
@@ -293,40 +321,76 @@ function firstStep() {
         answer = questions[questionIndex].options[2];
     });
 
-   
-    
-    console.log(questionIndex);
-    // get submit button
+    //style changer
+    if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
+        document.querySelector("html").classList.add("questiongroup1");
+    }
+    else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
+        document.querySelector("html").classList.add("questiongroup2");
+
+    }
+    else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10){
+        document.querySelector("html").classList.add("questiongroup3");
+
+    }
      
     
-    
+    // get submit button
     const submitButton = document.querySelector("#submit");
 
+
+    let countdownInterval2;
+
+    const startCountdownInterval2 = () => {
+    countdownTime2 = COUNTDOWN_DURATION_2;
+
+    clearInterval(countdownInterval2);
+
+    countdownInterval2 = setInterval(() => {
+    countdownTime2--;
+
+    countdownTimer2.textContent = `Time left: ${countdownTime2}`;
+
+        if (countdownTime2 <= 0) {
+        clearInterval(countdownInterval2);
+
+        countdownTimer2.textContent = "Time is up!";
+        }
+        }, 1000);
+    };
+
     const result = function (){
-        
         questionNumber++;
         const checkResult = checkAnswerForQuestion(questionIndex, answer);
         console.log(checkResult); 
         
         document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
-        // move to next question
+        startCountdownInterval2();
         
         // check if there are more questions
         if (questionIndex < questions.length) {
             // update question and answer options
             updateQuestionAndAnswers(questionIndex);
+            
         }else {
 
         // no more questions, display final result
-
         displayFinalResult();
 
+        // stop countdown timer
+        clearInterval(countdownInterval);
         }
     }
     
 
     // add event listener to submit button
     submitButton.addEventListener("click", result);
+    
+    const numCorrectAnswers = answer.filter((answer) => answer.isCorrect).length;
+
+    console.log(numCorrectAnswers);
 }
+
+
 
 

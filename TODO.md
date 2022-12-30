@@ -5,8 +5,8 @@
 * 10st frågor - strängar ☑️
 * olika frågokattekorier - arrays ☑️
 * olika stiler på olika kattegorier - css ☑️
-* max tid för varje fråga 60 sec räknar ner åt
-* max tid för hela spelet som räknar ner från början av slepet 10 min
+* max tid för varje fråga 60 sec räknar ner åt☑️
+* max tid för hela spelet som räknar ner från början av slepet 10 min☑️
 * random frågor ska visas varje gång - arrays☑️
 * mer tid ska man få om man svarar snabbt: Om man svarar på under 10 sekunder får man 5 poäng, på 20 sekunder 3 poäng, på 30 sekunder 1 poäng.
 

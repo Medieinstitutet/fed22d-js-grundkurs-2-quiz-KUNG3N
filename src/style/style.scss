@@ -46,7 +46,7 @@
 }
 
 .countdown{
-  width: 25%;
+  width: 40%;
   height: 5%;
   justify-content: center;
   font-size: 2rem;
@@ -55,6 +55,21 @@
   display: flex;
   margin: auto;
   right: 0%;
+  color: black;
+}
+
+.countdown2{
+  width: 18%;
+  height: 5%;
+  justify-content: center;
+  font-size: 2rem;
+  background-color: transparent;
+  position: absolute;
+  display: flex;
+  margin: auto;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: black;
 }
 
