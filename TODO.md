@@ -31,5 +31,5 @@
 
 * total poäng score - sträng number
 * highscore section med 10 platser, ska finnas i localaminnet
-* starat om knapp där frågorna och svar är random på nytt
+* starat om knapp där frågorna och svar är random på nytt☑️
 * en knapp som visar sammanfattning med vilka svar och frågor man hade

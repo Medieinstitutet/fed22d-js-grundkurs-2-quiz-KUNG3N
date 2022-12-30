@@ -40,29 +40,29 @@ const questions = [
     {
         questions: 'How many minutes are in a full week?',
         options: [
-            "10,080",
-            "17,000",
-            "8,960"
+            10.080,
+            17.000,
+            8.960
         ],
-        correctAnswer: "10,080"
+        correctAnswer: 10.080
     },
     {
-        questions: '121 Divided by 11 is?',
+        questions: '121 Divided by' +  11 + 'is?',
         options: [
-            "11",
-            "21",
-            "12"
+            11,
+            21,
+            12
         ],
-        correctAnswer: "11"
+        correctAnswer: 11
     },
     {
-        questions: 'What is the Next Prime Number after 7?',
+        questions: 'What is the Next Prime Number after' + 7 + '?',
         options: [
-            "11",
-            "10",
-            "14"
+            11,
+            10,
+            14
         ],
-        correctAnswer: "11"
+        correctAnswer: 11
     },
     {
         questions: 'who is this person?',
@@ -152,6 +152,8 @@ document.querySelector("#start-btn").addEventListener("click", startQuiz);
 runs the alert to welcome the player and add the hidden property to the div
 then runs the second funtion firststep.*/
 
+let nameOfPlayerAlertShown = false;
+
 function startQuiz() {
 
     playerName = document.getElementById("playerName").value;
@@ -164,7 +166,12 @@ function startQuiz() {
 
     let newPlayerName = slicedPlayerName + restOfPlayerName;
 
+    if(!nameOfPlayerAlertShown) {
+
     alert("hi " + newPlayerName + ", Good luck with ur game");
+    nameOfPlayerAlertShown = true;
+
+    }
 
     document.querySelector(".start").classList.add("goaway");
 
@@ -208,12 +215,18 @@ function updateQuestionAndAnswers () {
     //showing respectiv pics to respective questions
     if (randomQuestion === q8) {
         document.querySelector(".ironman").classList.remove("goaway");
+        document.querySelector(".kendrick").classList.add("disappear");
+        document.querySelector(".titanic").classList.add("disappear");
     }
     if (randomQuestion === q9) {
-        document.querySelector(".kendrick").classList.remove("goaway"); 
+        document.querySelector(".kendrick").classList.remove("goaway");
+        document.querySelector(".ironman").classList.add("disappear");
+        document.querySelector(".titanic").classList.add("disappear"); 
     }
     if (randomQuestion === q10) {
         document.querySelector(".titanic").classList.remove("goaway");
+        document.querySelector(".ironman").classList.add("disappear");
+        document.querySelector(".kendrick").classList.add("disappear");
     }
 
     //removing the old styles before implementing new ones
@@ -236,8 +249,18 @@ function updateQuestionAndAnswers () {
 show the first qwestion, then choose a random question from a random qwestionbox
 and show 3 random anweres*/
 
+
+
+
+
+function firstStep() {
+    document.querySelector("#countdown-timer").classList.remove("goaway");
+
+    const COUNTDOWN_DURATION_2 = 60;
+let countdownTime2 = COUNTDOWN_DURATION_2;
 let questionIndex = getARandomQuestion();
 let answer = null;
+
 const countdownInterval2 = setInterval(() => {
     countdownTime2--;
 
@@ -250,11 +273,6 @@ if (countdownTime2 <= 0) {
 
 }
 }, 1000);
-
-
-
-function firstStep() {
-    document.querySelector("#countdown-timer").classList.remove("goaway");
 
     const COUNTDOWN_DURATION = 10;
 
@@ -282,11 +300,11 @@ function firstStep() {
 
     document.querySelector("#countdown-timer-2").classList.remove("goaway");
 
-    const COUNTDOWN_DURATION_2 = 60;
+    
 
     const countdownTimer2 = document.querySelector("#countdown-timer-2");
 
-    let countdownTime2 = COUNTDOWN_DURATION_2;
+    
 
     
 
@@ -359,6 +377,24 @@ function firstStep() {
         }, 1000);
     };
 
+    
+
+//     // check the player's answer
+//     function checkAnswer() {
+//     // check if the answer is correct
+//     if (questions[questionIndex].correctAnswer === answer) {
+//         // increment the score by 1
+//         score++;
+//     } else {
+//         // decrement the score by 1
+//         score--;
+//     }
+// }
+
+
+
+
+
     const result = function (){
         questionNumber++;
         const checkResult = checkAnswerForQuestion(questionIndex, answer);
@@ -392,18 +428,45 @@ function firstStep() {
     // add event listener to submit button
     submitButton.addEventListener("click", result);
     
-    const numCorrectAnswers = answer.filter((answer) => answer.isCorrect).length;
-
-    console.log(numCorrectAnswers);
+    
+   
 }
+
+let score = 0; // score tracker
+
+
+
+// const numCorrectAnswers = answer.filter((answer) => answer.isCorrect).length;
 
 function displayFinalResult() {
     document.querySelector(".firststep").classList.add("goaway");
     document.querySelector("#countdown-timer").classList.add("goaway");
     document.querySelector("#countdown-timer-2").classList.add("goaway");
     document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
+    document.querySelector(".final").classList.remove("goaway");
+
+    // document.querySelector("#highscore").innerHTML = score;
 
 }
+
+
+
+function repeat () {
+    document.querySelector(".final").classList.add("goaway");
+
+    playerName = "";
+
+    playerName = prompt("Please enter your name:");
+
+    alert("Hello " + playerName + " lets go again!")
+
+
+
+
+    startQuiz();
+}
+
+document.querySelector("#repeat").addEventListener("click", repeat)
 
 
 
