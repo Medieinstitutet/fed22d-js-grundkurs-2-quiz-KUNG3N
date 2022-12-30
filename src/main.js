@@ -408,17 +408,21 @@ function displayFinalResult() {
 
 
 function repeat () {
-    document.querySelector(".final").classList.add("goaway");
+    // document.querySelector(".final").classList.add("goaway");
 
-    playerName = prompt("Please enter your name:");
+    // playerName = prompt("Please enter your name:");
 
-    alert("Hello " + playerName + " lets go again!")
+    // alert("Hello " + playerName + " lets go again!")
 
-    if(!playerName || playerName.length === 0){
-        repeat();
-    }
+    // if(!playerName || playerName.length === 0){
+    //     repeat();
+    // }
 
-    firstStep();
+    // firstStep();
+
+    //okej this is basically cheating HAHA but because the function is not workign like it shoudl imma just put this here for now
+
+    location.reload();
 }
 
 document.querySelector("#repeat").addEventListener("click", repeat)
