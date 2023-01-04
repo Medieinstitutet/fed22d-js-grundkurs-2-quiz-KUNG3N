@@ -14,7 +14,7 @@
 # svar
 
 * minst 3 svar möjligheter, minst 1 rätt ☑️
-* +1 för rätt svar och -1 för fel svar på fråga tillfället
+* +1 för rätt svar och -1 för fel svar på fråga tillfället☑️
 * man ska kunna märkera flera svar som rätt ☑️
 * random svar ska visas varje gång - arryas☑️
 
@@ -29,7 +29,7 @@
 
 # slut page
 
-* total poäng score - sträng number
+* total poäng score - sträng number ☑️
 * highscore section med 10 platser, ska finnas i localaminnet
 * starat om knapp där frågorna och svar är random på nytt☑️
 * en knapp som visar sammanfattning med vilka svar och frågor man hade
