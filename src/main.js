@@ -1,9 +1,21 @@
 let currentScore = 0;
+let questionIndex = 0;
+let answer = null;
 let questionNumber = 1;
+let answeredQuestions = [];
+let playerName = '';
+let nameOfPlayerAlertShown = false;
+let countdownInterval2;
+
+document.querySelector("#start-btn").addEventListener("click", startQuiz);
+document.querySelector("#repeat").addEventListener("click", repeat)
+document.querySelector("#submit").addEventListener("click", submit);
 
 const countdownTimer2 = document.querySelector("#countdown-timer-2");
+const countdownTimer = document.querySelector("#countdown-timer");
 
-let countdownInterval2;
+const COUNTDOWN_DURATION_2 = 60;
+let countdownTime2 = COUNTDOWN_DURATION_2;
 
 const startCountdownInterval2 = () => {
 countdownTime2 = COUNTDOWN_DURATION_2;
@@ -116,6 +128,38 @@ let questions = [
     }
 ]
 
+//question group 1
+const q1 = questions[0].questions; 
+const q2 = questions[1].questions;
+const q3 = questions[2].questions;
+const q4 = questions[3].questions;
+//question group 2
+const q5 = questions[4].questions; 
+const q6 = questions[5].questions;
+const q7 = questions[6].questions;
+//question group 3
+const q8 = questions[7].questions;
+const q9 = questions[8].questions; 
+const q10 = questions[9].questions;
+
+function randomizeQuestions(){
+    const currQuestions = questions;
+    const randomQuestions = []
+    while (currQuestions.length > 0) { 
+        const randomIndex = Math.floor(Math.random() * currQuestions.length); 
+        randomQuestions.push(currQuestions[randomIndex]);
+        currQuestions.splice(randomIndex, 1);
+    }
+    questions = randomQuestions;
+}
+
+function getARandomQuestion() {
+    let randomIndex = Math.floor(Math.random() * questions.length); 
+    if (randomIndex >= questions.length || randomIndex < 0) {
+        return null;
+    }
+    return randomIndex; 
+}
 
 function randomizeOptionsForAllQuestions() { 
     for (let i = 0; i < questions.length; i++) {
@@ -148,45 +192,6 @@ function checkAnswerForQuestion(index, answer) {
     return res;
 }
 
-function getARandomQuestion() {
-    let randomIndex = Math.floor(Math.random() * questions.length); 
-    if (randomIndex >= questions.length || randomIndex < 0) {
-        return null;
-    }
-    return randomIndex; 
-}
-
-function randomizeQuestions(){
-    const currQuestions = questions;
-    const randomQuestions = []
-    while (currQuestions.length > 0) { 
-        const randomIndex = Math.floor(Math.random() * currQuestions.length); 
-        randomQuestions.push(currQuestions[randomIndex]);
-        currQuestions.splice(randomIndex, 1);
-    }
-    questions = randomQuestions;
-}
-
-let playerName = '';
-//question group 1
-const q1 = questions[0].questions; 
-const q2 = questions[1].questions;
-const q3 = questions[2].questions;
-const q4 = questions[3].questions;
-//question group 2
-const q5 = questions[4].questions; 
-const q6 = questions[5].questions;
-const q7 = questions[6].questions;
-//question group 3
-const q8 = questions[7].questions;
-const q9 = questions[8].questions; 
-const q10 = questions[9].questions;
-
-document.querySelector("#start-btn").addEventListener("click", startQuiz);
-
-
-let nameOfPlayerAlertShown = false;
-
 function startQuiz() {
 
     playerName = document.getElementById("playerName").value;
@@ -216,7 +221,69 @@ function startQuiz() {
     firstStep();
 }
 
-let answeredQuestions = [];
+function firstStep() {
+    randomizeQuestions();
+    questionIndex = 0;
+    questionNumber = 1;
+
+    document.querySelector("#countdown-timer").classList.remove("goaway");
+
+    const COUNTDOWN_DURATION = 10;
+
+    let countdownTime = COUNTDOWN_DURATION * 60;
+
+    const countdownInterval = setInterval(() => {
+
+        countdownTime--;
+
+        const minutes = Math.floor(countdownTime / 60);
+        const seconds = countdownTime % 60;
+
+        countdownTimer.textContent = `QUIZ Time remaining: ${minutes}:${seconds}`;
+
+        if(countdownTime <= 0) {
+            clearInterval(countdownInterval);
+        
+
+            countdownTimer.textContent = "Time is up!";
+
+        }
+    },   1000);
+
+    document.querySelector("#countdown-timer-2").classList.remove("goaway");
+    document.querySelector(".firststep").classList.remove("goaway");
+
+    randomizeOptionsForAllQuestions();
+
+    document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
+    let randomQuestion = questions[questionIndex].questions;
+    
+    document.querySelector("#question").innerHTML = randomQuestion;
+
+    document.querySelector("#ans1").innerHTML = questions[questionIndex].options[0];
+    document.querySelector("#ans2").innerHTML = questions[questionIndex].options[1];
+    document.querySelector("#ans3").innerHTML = questions[questionIndex].options[2];
+
+    document.querySelector("#ans1").addEventListener("click", function () { 
+        answer = questions[questionIndex].options[0];
+    });
+    document.querySelector("#ans2").addEventListener("click", function () {
+        answer = questions[questionIndex].options[1];
+    });
+    document.querySelector("#ans3").addEventListener("click", function () {
+        answer = questions[questionIndex].options[2];
+    });
+
+    if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
+        document.querySelector("html").classList.add("questiongroup1");
+    }
+    else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
+        document.querySelector("html").classList.add("questiongroup2");
+    }
+    else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10){
+        document.querySelector("html").classList.add("questiongroup3");
+    }
+}
 
 function updateQuestionAndAnswers(index) {
 
@@ -263,86 +330,15 @@ function updateQuestionAndAnswers(index) {
 
 }
 
-const COUNTDOWN_DURATION_2 = 60;
-let countdownTime2 = COUNTDOWN_DURATION_2;
-let questionIndex = 0;
-
-let answer = null;
-
-
-function firstStep() {
-    randomizeQuestions();
-    questionIndex = 0;
-    questionNumber = 1;
-
-    document.querySelector("#countdown-timer").classList.remove("goaway");
-
-    const COUNTDOWN_DURATION = 10;
-
-    const countdownTimer = document.querySelector("#countdown-timer");
-
-    let countdownTime = COUNTDOWN_DURATION * 60;
-
-    const countdownInterval = setInterval(() => {
-
-        countdownTime--;
-
-        const minutes = Math.floor(countdownTime / 60);
-        const seconds = countdownTime % 60;
-
-        countdownTimer.textContent = `QUIZ Time remaining: ${minutes}:${seconds}`;
-
-        if(countdownTime <= 0) {
-            clearInterval(countdownInterval);
-        
-
-            countdownTimer.textContent = "Time is up!";
-
-        }
-    },   1000);
-
-    document.querySelector("#countdown-timer-2").classList.remove("goaway");
-
-       
-    randomizeOptionsForAllQuestions();
-
-    document.querySelector(".firststep").classList.remove("goaway");
-    
-
-    document.querySelector("#questionNumber").textContent = "Qwestion " + questionNumber;
-    let randomQuestion = questions[questionIndex].questions;
-    
-    
-    document.querySelector("#question").innerHTML = randomQuestion;
-
-    document.querySelector("#ans1").innerHTML = questions[questionIndex].options[0];
-    document.querySelector("#ans2").innerHTML = questions[questionIndex].options[1];
-    document.querySelector("#ans3").innerHTML = questions[questionIndex].options[2];
-
-    document.querySelector("#ans1").addEventListener("click", function () { 
-        answer = questions[questionIndex].options[0];
-    });
-    document.querySelector("#ans2").addEventListener("click", function () {
-        answer = questions[questionIndex].options[1];
-    });
-    document.querySelector("#ans3").addEventListener("click", function () {
-        answer = questions[questionIndex].options[2];
-    });
-
-    if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
-        document.querySelector("html").classList.add("questiongroup1");
-    }
-    else if (randomQuestion === q5 || randomQuestion === q6 || randomQuestion === q7) {
-        document.querySelector("html").classList.add("questiongroup2");
-
-    }
-    else if (randomQuestion === q8 || randomQuestion === q9 || randomQuestion === q10){
-        document.querySelector("html").classList.add("questiongroup3");
-
-    }
+function displayFinalResult() {
+    document.querySelector(".firststep").classList.add("goaway");
+    document.querySelector("#countdown-timer").classList.add("goaway");
+    document.querySelector("#countdown-timer-2").classList.add("goaway");
+    document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
+    document.querySelector(".final").classList.remove("goaway");
 }
 
- function submit (){
+function submit (){
     questionNumber++;
     
     const checkResult = checkAnswerForQuestion(questionIndex, answer);
@@ -363,20 +359,8 @@ function firstStep() {
     }else {
 
     displayFinalResult();
-
-    clearInterval(countdownInterval);
     }
 }
-
-function displayFinalResult() {
-    document.querySelector(".firststep").classList.add("goaway");
-    document.querySelector("#countdown-timer").classList.add("goaway");
-    document.querySelector("#countdown-timer-2").classList.add("goaway");
-    document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
-    document.querySelector(".final").classList.remove("goaway");
-}
-
-
 
 function repeat () {
     // document.querySelector(".final").classList.add("goaway");
@@ -395,6 +379,3 @@ function repeat () {
 
     location.reload();
 }
-
-document.querySelector("#repeat").addEventListener("click", repeat)
-document.querySelector("#submit").addEventListener("click", submit);

@@ -108,7 +108,7 @@ and (max-device-width: 480px) {
     touch-action: manipulation;
     white-space: nowrap;
     will-change: box-shadow, transform;
-    font-size: 18px;
+    font-size: 1.125em;
   }
 }
 
@@ -182,7 +182,7 @@ and (max-device-width: 480px) {
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow, transform;
-  font-size: 18px;
+  font-size: 1.125em;
 }
 
 .answeres:focus {
@@ -231,7 +231,7 @@ and (max-device-width: 480px) {
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow, transform;
-  font-size: 18px;
+  font-size: 1.125em;
 }
 
 .submit:focus {
@@ -307,7 +307,7 @@ and (max-device-width: 480px) {
     white-space: nowrap;
     will-change: box-shadow, transform;
     font-family: cursive, sans-serif;
-    font-size: 16px;
+    font-size: 1em;
   }
 
   .answeres:focus {
@@ -438,7 +438,7 @@ and (max-device-width: 480px) {
     white-space: nowrap;
     will-change: box-shadow, transform;
     font-family: 'Times New Roman', Times, serif, sans-serif;
-    font-size: 16px;
+    font-size: 1em;
   }
 
   .answeres:focus {
@@ -522,7 +522,7 @@ and (max-device-width: 480px) {
       position: fixed;
       text-align: center;
       font-family: cursive, sans-serif;
-      top: 35%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%);
     }
@@ -569,7 +569,7 @@ and (max-device-width: 480px) {
     white-space: nowrap;
     will-change: box-shadow, transform;
     font-family: cursive, sans-serif;
-    font-size: 16px;
+    font-size: 1em;
   }
 
   .answeres:focus {
