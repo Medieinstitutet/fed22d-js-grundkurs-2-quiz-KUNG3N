@@ -1,3 +1,7 @@
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px) {
+
 :root {
   background-color: #026873;
   background-size: 13px 13px, 29px 29px, 37px 37px, 53px 53px;
@@ -26,7 +30,6 @@
     linear-gradient(0, transparent 50%, rgba(255, 255, 255, .17) 50%),
     linear-gradient(0, transparent 50%, rgba(255, 255, 255, .19) 50%);
 
-  background-attachment: fixed;
 }
 
 .countdown {
@@ -771,4 +774,5 @@
 .score {
   text-align: center;
   font-size: 4rem;
+}
 }
