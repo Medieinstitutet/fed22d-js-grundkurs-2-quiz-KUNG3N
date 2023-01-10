@@ -1,8 +1,5 @@
-// this is where the questions stored
-
 let currentScore = 0;
 let questionNumber = 1;
-
 
 const countdownTimer2 = document.querySelector("#countdown-timer-2");
 
@@ -119,23 +116,17 @@ let questions = [
     }
 ]
 
-/**
- * Randomizes the options for all questions
- * This function loops through the questions array and calls the randomizeOptionsForQuestion function
- * for each question
-*/
 
 function randomizeOptionsForAllQuestions() { 
-    // loop through the questions array
     for (let i = 0; i < questions.length; i++) {
-        const options = questions[i].options; // get the options for the current question
-        const newOptions = [] // create a new array to store the randomized options
-        while (options.length > 0) { // loop through the options array
-            const randomIndex = Math.floor(Math.random() * options.length); // get a random index
-            newOptions.push(options[randomIndex]); // add the option at the random index to the new array
-            options.splice(randomIndex, 1); // remove the option at the random index from the options array
+        const options = questions[i].options; 
+        const newOptions = [] 
+        while (options.length > 0) { 
+            const randomIndex = Math.floor(Math.random() * options.length); 
+            newOptions.push(options[randomIndex]); 
+            options.splice(randomIndex, 1);
         }
-        questions[i].options = newOptions; // set the options for the current question to the new array
+        questions[i].options = newOptions;
     }
 }
 
@@ -158,20 +149,20 @@ function checkAnswerForQuestion(index, answer) {
 }
 
 function getARandomQuestion() {
-    let randomIndex = Math.floor(Math.random() * questions.length); // get a random index
-    if (randomIndex >= questions.length || randomIndex < 0) { // check if the random index is out of bounds
-        return null; // return null if it is
+    let randomIndex = Math.floor(Math.random() * questions.length); 
+    if (randomIndex >= questions.length || randomIndex < 0) {
+        return null;
     }
-    return randomIndex; // return the random index  
+    return randomIndex; 
 }
 
 function randomizeQuestions(){
     const currQuestions = questions;
     const randomQuestions = []
-    while (currQuestions.length > 0) { // loop through the options array
-        const randomIndex = Math.floor(Math.random() * currQuestions.length); // get a random index
-        randomQuestions.push(currQuestions[randomIndex]); // add the option at the random index to the new array
-        currQuestions.splice(randomIndex, 1); // remove the option at the random index from the options array
+    while (currQuestions.length > 0) { 
+        const randomIndex = Math.floor(Math.random() * currQuestions.length); 
+        randomQuestions.push(currQuestions[randomIndex]);
+        currQuestions.splice(randomIndex, 1);
     }
     questions = randomQuestions;
 }
@@ -190,12 +181,9 @@ const q7 = questions[6].questions;
 const q8 = questions[7].questions;
 const q9 = questions[8].questions; 
 const q10 = questions[9].questions;
-// runing the first code to start the quiz
+
 document.querySelector("#start-btn").addEventListener("click", startQuiz);
 
-/*first function that stores the input and makes it look professional,
-runs the alert to welcome the player and add the hidden property to the div
-then runs the second funtion firststep.*/
 
 let nameOfPlayerAlertShown = false;
 
@@ -228,16 +216,13 @@ function startQuiz() {
     firstStep();
 }
 
-// move to next question
 let answeredQuestions = [];
 
 function updateQuestionAndAnswers(index) {
 
-    // check if all questions have been answered
     if (answeredQuestions.length === questions.length) return;
 
 
-    // add the index of the current question to the answeredQuestions array
     answeredQuestions.push(index);
 
     const question = questions[index].questions;
@@ -248,7 +233,6 @@ function updateQuestionAndAnswers(index) {
     document.querySelector("#ans2").textContent = questions[index].options[1];
     document.querySelector("#ans3").textContent = questions[index].options[2];
 
-    //showing respectiv pics to respective questions
     if (question === q8) {
         document.querySelector(".ironman").classList.remove("goaway");
         document.querySelector(".kendrick").classList.add("disappear");
@@ -264,8 +248,6 @@ function updateQuestionAndAnswers(index) {
         document.querySelector(".ironman").classList.add("disappear");
         document.querySelector(".kendrick").classList.add("disappear");
     }
-
-    //removing the old styles before implementing new ones
 
     document.querySelector("html").classList.remove("questiongroup1", "questiongroup2", "questiongroup3");
 
@@ -287,9 +269,6 @@ let questionIndex = 0;
 
 let answer = null;
 
-/*second function that removs the hidden property from the second div to 
-show the first qwestion, then choose a random question from a random qwestionbox
-and show 3 random anweres*/
 
 function firstStep() {
     randomizeQuestions();
@@ -350,7 +329,6 @@ function firstStep() {
         answer = questions[questionIndex].options[2];
     });
 
-    //style changer
     if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
         document.querySelector("html").classList.add("questiongroup1");
     }
@@ -379,23 +357,16 @@ function firstStep() {
     document.querySelector(".kendrick").classList.add("goaway");
     document.querySelector(".titanic").classList.add("goaway");
 
-    // check if there are more questions
     if (questionIndex < questions.length) {
-        // update question and answer options
         updateQuestionAndAnswers(questionIndex);
         
     }else {
 
-    // no more questions, display final result
     displayFinalResult();
 
-    // stop countdown timer
     clearInterval(countdownInterval);
     }
 }
-
-
-// const numCorrectAnswers = answer.filter((answer) => answer.isCorrect).length;
 
 function displayFinalResult() {
     document.querySelector(".firststep").classList.add("goaway");
