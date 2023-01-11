@@ -1,3 +1,4 @@
+//variables
 let currentScore = 0;
 let questionIndex = 0;
 let answer = null;
@@ -7,10 +8,12 @@ let playerName = '';
 let nameOfPlayerAlertShown = false;
 let countdownInterval2;
 
+//eventlisterners
 document.querySelector("#start-btn").addEventListener("click", startQuiz);
 document.querySelector("#repeat").addEventListener("click", repeat)
 document.querySelector("#submit").addEventListener("click", submit);
 
+//timers
 const countdownTimer2 = document.querySelector("#countdown-timer-2");
 const countdownTimer = document.querySelector("#countdown-timer");
 
@@ -35,6 +38,7 @@ countdownTimer2.textContent = `Time left: ${countdownTime2}`;
     }, 1000);
 };    
 
+//information array
 let questions = [
     {
         questions: 'Who was the Ancient Greek God of the Sun?',
@@ -142,6 +146,7 @@ const q8 = questions[7].questions;
 const q9 = questions[8].questions; 
 const q10 = questions[9].questions;
 
+//randomQuestionGenerator:)
 function randomizeQuestions(){
     const currQuestions = questions;
     const randomQuestions = []
@@ -161,6 +166,7 @@ function getARandomQuestion() {
     return randomIndex; 
 }
 
+//randomAnswereGenerator:)
 function randomizeOptionsForAllQuestions() { 
     for (let i = 0; i < questions.length; i++) {
         const options = questions[i].options; 
@@ -174,6 +180,7 @@ function randomizeOptionsForAllQuestions() {
     }
 }
 
+//collecting information for the score
 function checkAnswerForQuestion(index, answer) {
     console.log(questions[index].correctAnswer, answer)
 
@@ -192,6 +199,8 @@ function checkAnswerForQuestion(index, answer) {
     return res;
 }
 
+/*first page function to collect player name with a failsafe if no name was put.
+a little welcome message and calling the question function*/
 function startQuiz() {
 
     playerName = document.getElementById("playerName").value;
@@ -221,6 +230,8 @@ function startQuiz() {
     firstStep();
 }
 
+/*calling the randomQuestionGenerator and applying the question timer. calling the randomAnswereGenerator 
+then displaing them in */
 function firstStep() {
     randomizeQuestions();
     questionIndex = 0;
@@ -274,6 +285,7 @@ function firstStep() {
         answer = questions[questionIndex].options[2];
     });
 
+    //chaingng the style of the website based on the question group
     if (randomQuestion === q1 || randomQuestion === q2 || randomQuestion === q3 || randomQuestion === q4) {
         document.querySelector("html").classList.add("questiongroup1");
     }
@@ -285,6 +297,7 @@ function firstStep() {
     }
 }
 
+//displaing new random wuestions and answeres everytime the submit button is clicked
 function updateQuestionAndAnswers(index) {
 
     if (answeredQuestions.length === questions.length) return;
@@ -330,6 +343,7 @@ function updateQuestionAndAnswers(index) {
 
 }
 
+//mostly hiding stuff and showing one thing
 function displayFinalResult() {
     document.querySelector(".firststep").classList.add("goaway");
     document.querySelector("#countdown-timer").classList.add("goaway");
@@ -357,8 +371,7 @@ function submit (){
         updateQuestionAndAnswers(questionIndex);
         
     }else {
-
-    displayFinalResult();
+        displayFinalResult();
     }
 }
 
