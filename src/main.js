@@ -301,8 +301,7 @@ function firstStep() {
 function updateQuestionAndAnswers(index) {
 
     if (answeredQuestions.length === questions.length) return;
-
-
+    
     answeredQuestions.push(index);
 
     const question = questions[index].questions;
