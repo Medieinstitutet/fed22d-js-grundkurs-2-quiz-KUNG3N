@@ -74,10 +74,14 @@ select {
     scroll-behavior: auto !important;
   }
 }
-@media (min-width: 1025px) {
+@media screen and (min-width: 1025px) {
   body {
     max-width: 100%;
     overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  main {
+    max-height: 80vh;
   }
   :root {
     background-color: #026873;
