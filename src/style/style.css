@@ -1,6 +1,6 @@
-@import 'general.css';
-@import 'tablet.css';
-@import 'mobile.css';
+@import url("general.css");
+@import url("tablet.css");
+@import url("mobile.css");
 /* Box sizing rules */
 *,
 *::before,
