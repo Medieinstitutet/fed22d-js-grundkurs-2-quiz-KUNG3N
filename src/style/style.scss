@@ -1,6 +1,6 @@
 @use "utils/a11y";
 @use "vendor/reset";
 
-@import 'general';
-@import 'tablet';
-@import 'mobile';
+@import 'general.css';
+@import 'tablet.css';
+@import 'mobile.css';
