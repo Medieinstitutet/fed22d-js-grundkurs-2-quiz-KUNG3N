@@ -38,6 +38,7 @@ main{
     linear-gradient(0, transparent 50%, rgba(255, 255, 255, .17) 50%),
     linear-gradient(0, transparent 50%, rgba(255, 255, 255, .19) 50%);  
   }
+
   .countdown{
     width: 40%;
     height: 5%;
@@ -136,17 +137,16 @@ main{
     display: none;
   }
   
-  .firststep {
-    
-    h2{
-      display: flex;
-      position: fixed;
-      text-align: center;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%);
-    }
+.firststep {
+  h2{
+    display: flex;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%);
   }
+}
   
   .option {
     display: flex;
