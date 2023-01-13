@@ -216,7 +216,7 @@
     position: fixed;
     text-align: center;
     font-family: cursive, sans-serif;
-    top: 60%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%);
   }
