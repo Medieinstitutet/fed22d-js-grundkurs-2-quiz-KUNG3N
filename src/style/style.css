@@ -575,7 +575,7 @@ select {
     color: black;
   }
   .countdown2 {
-    width: 40%;
+    width: 45%;
     height: 5%;
     justify-content: center;
     font-size: 2rem;
@@ -766,55 +766,17 @@ select {
     background: linear-gradient(to right, #1f4037, #99f2c8);
   }
   .questiongroup1 .firststep h2 {
-    display: flex;
-    position: fixed;
-    text-align: center;
     font-family: cursive, sans-serif;
-    top: 60%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%);
   }
   .questiongroup1 .maintext {
     font-family: cursive, sans-serif;
-    font-size: 2rem;
-    margin-top: 20vh;
-    display: flex;
-    position: fixed;
-    left: 50%;
-    top: 5%;
-    transform: translate(-50%, -50%);
   }
   .questiongroup1 .answeres {
-    align-items: center;
     width: 30%;
-    background-color: #FCFCFD;
-    border-radius: 4px;
-    border-width: 0;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    box-sizing: border-box;
-    color: #36395A;
-    cursor: pointer;
-    display: inline-flex;
-    margin-left: auto;
-    margin-right: auto;
     height: 40px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow 0.15s, transform 0.15s;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow, transform;
     font-family: cursive, sans-serif;
     font-size: 1em;
   }
@@ -832,39 +794,10 @@ select {
     background-color: transparent;
   }
   .questiongroup1 .submit {
-    top: 75%;
-    left: 25%;
-    align-items: center;
-    width: 50%;
     background: #1f4037;
     background: linear-gradient(to right, #99f2c8, #1f4037);
-    border-radius: 4px;
-    border-width: 0;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    box-sizing: border-box;
     color: white;
-    cursor: pointer;
-    display: inline-flex;
-    margin-left: auto;
-    margin-right: auto;
     height: 100px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: absolute;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow 0.15s, transform 0.15s;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow, transform;
     font-family: cursive, sans-serif;
     font-size: 3rem;
   }
@@ -884,9 +817,6 @@ select {
     background: linear-gradient(to right, #8e2de2, #4a00e0);
   }
   .questiongroup2 .firststep h2 {
-    display: flex;
-    position: fixed;
-    text-align: center;
     font-family: "Times New Roman", Times, serif, sans-serif;
     top: 35%;
     left: 50%;
@@ -894,45 +824,10 @@ select {
   }
   .questiongroup2 .maintext {
     font-family: "Times New Roman", Times, serif, sans-serif;
-    font-size: 2rem;
-    margin-top: 20vh;
-    display: flex;
-    position: fixed;
-    left: 50%;
-    top: 5%;
-    transform: translate(-50%, -50%);
   }
   .questiongroup2 .answeres {
-    align-items: center;
     width: 30%;
-    background-color: #FCFCFD;
-    border-radius: 4px;
-    border-width: 0;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    box-sizing: border-box;
-    color: #36395A;
-    cursor: pointer;
-    display: inline-flex;
-    margin-left: auto;
-    margin-right: auto;
     height: 40px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow 0.15s, transform 0.15s;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow, transform;
     font-family: "Times New Roman", Times, serif, sans-serif;
     font-size: 1em;
   }
@@ -950,39 +845,10 @@ select {
     background-color: transparent;
   }
   .questiongroup2 .submit {
-    top: 75%;
-    left: 25%;
-    align-items: center;
-    width: 50%;
     background: #8e2de2;
     background: linear-gradient(to right, #4a00e0, #8e2de2);
-    border-radius: 4px;
-    border-width: 0;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    box-sizing: border-box;
     color: white;
-    cursor: pointer;
-    display: inline-flex;
-    margin-left: auto;
-    margin-right: auto;
     height: 100px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: absolute;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow 0.15s, transform 0.15s;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow, transform;
     font-family: "Times New Roman", Times, serif, sans-serif;
     font-size: 3rem;
   }
@@ -1002,9 +868,6 @@ select {
     background: linear-gradient(to right, #8a2387, #e94057, #f27121);
   }
   .questiongroup3 .firststep h2 {
-    display: flex;
-    position: fixed;
-    text-align: center;
     font-family: cursive, sans-serif;
     top: 40%;
     left: 50%;
@@ -1012,45 +875,10 @@ select {
   }
   .questiongroup3 .maintext {
     font-family: cursive, sans-serif;
-    font-size: 2rem;
-    margin-top: 30vh;
-    display: flex;
-    position: fixed;
-    left: 50%;
-    top: 5%;
-    transform: translate(-50%, -50%);
   }
   .questiongroup3 .answeres {
-    align-items: center;
     width: 30%;
-    background-color: #FCFCFD;
-    border-radius: 4px;
-    border-width: 0;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    box-sizing: border-box;
-    color: #36395A;
-    cursor: pointer;
-    display: inline-flex;
-    margin-left: auto;
-    margin-right: auto;
     height: 40px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow 0.15s, transform 0.15s;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow, transform;
     font-family: cursive, sans-serif;
     font-size: 1em;
   }
@@ -1068,39 +896,10 @@ select {
     background-color: transparent;
   }
   .questiongroup3 .submit {
-    top: 75%;
-    left: 25%;
-    align-items: center;
-    width: 50%;
     background: #1f4037;
     background: linear-gradient(to right, #e94057, #8a2387);
-    border-radius: 4px;
-    border-width: 0;
-    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-    box-sizing: border-box;
     color: white;
-    cursor: pointer;
-    display: inline-flex;
-    margin-left: auto;
-    margin-right: auto;
     height: 100px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: absolute;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow 0.15s, transform 0.15s;
-    -moz-user-select: none;
-     -ms-user-select: none;
-         user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow, transform;
     font-family: cursive, sans-serif;
     font-size: 3rem;
   }
@@ -1121,7 +920,6 @@ select {
   .parent img {
     position: absolute;
     display: inline-block;
-    /* or block if you prefer */
     width: 80%;
     top: 7%;
   }
