@@ -1,69 +1,23 @@
-<!doctype html>
-<html lang="se"> 
+<!DOCTYPE html>
+<html lang="en"> <!-- TODO: glöm ej att byta språk här -->
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/ico" href="public/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="src/style/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&display=swap" rel="stylesheet">  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekt-quiz</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <link rel="stylesheet" href="./src/style/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekt</title>
   </head>
   <body>
     <main>
-      <!-- code that includes the first page with the input for playername and the button to start-->
-      <div class="start">
-        <h1 class="maintext">START QUIZ</h1>
+      <div class="app" id="app"></div> <!-- TODO: går bra att radera -->
+      <!-- TODO: skriv din kod här, innan script-taggen -->
+    </main>
 
-        <input class="playerName" type="text" id="playerName" placeholder="your name please">
-
-        <button class="start-btn" id="start-btn">LETS GOOO</button>
-      </div>
-
-      <!-- the 2 timers that are suppoce to be running during the game-->
-      <div class="countdown" id="countdown-timer"></div>
-      <div class="countdown2" id="countdown-timer-2"></div>
-
-      <!-- code that includes the main game with the question and 
-      option containers, plus a button to submit the answere and go to the next question -->
-      <div class="firststep goaway">
-
-        <h1 class="maintext" id="questionNumber"></h1>
-
-        <h2 id="question"></h2>
-
-        <div class="option">
-          <button class="answeres" id="ans1"></button>
-          <button class="answeres" id="ans2"></button>
-          <button class="answeres" id="ans3"></button>
-        </div>
-
-        <button class="submit" id="submit">submit</button>
-      </div>
-
-      <!-- the pictures that get used in 3 speciphic instinces -->
-      <div class="parent">
-        <div class="ironman goaway"><img src="./public/Downey.png" alt="the actor robert downey jr standing in his time traveling suit from the movie avengers endgame"></div>
-        <div class="titanic goaway"><img src="./public/Titanic.png" alt="the movie titanic with 2 actors in it from the iconic romantic scean where they are hugging on the tip of the ship" ></div>
-        <div class="kendrick goaway"><img src="./public/Ken.png" alt="the rapper kendrick lamar sitting in a chair with a crown made of dimonds resembeling the crown on jesuses head" ></div>
-      </div>
-
-      <!-- final page code that includes the text for score display and 2 buttons for repeating the game and getting a summary -->
-      <div class="final goaway" id="final">
-
-        <p class="score">Your score for this match is:</p>
-
-        <!-- <section class="finalscore goaway" id="finalscore"></section> -->
-
-        <div class="highscore" id="highscore">test</div>
-
-        <button class="repeat" id="repeat">Play again</button>
-
-        <button class="summary" id="summary">Summary</button>
-
-      </div>
-  </main>
-
-    <script type="text/javascript" src="src/main.js"></script>
+    <!-- TODO
+    - Validera HTML (kopiera den renderade HTML-koden): https://validator.w3.org/#validate_by_input
+    - Kontrollera tillgänglighet: https://www.a11yproject.com/checklist/ & Chrome Lighthouse/Firefox Accessibility Tools
+    - Validera genererade CSS: https://jigsaw.w3.org/css-validator/#validate_by_input
+    -->
+    <script type="module" src="/src/main.ts"></script>
   </body>
-  </html>
+</html>

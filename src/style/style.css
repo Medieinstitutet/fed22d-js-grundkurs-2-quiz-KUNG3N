@@ -1,6 +1,3 @@
-@import url("general.css");
-@import url("tablet.css");
-@import url("mobile.css");
 /* Box sizing rules */
 *,
 *::before,
@@ -67,13 +64,63 @@ select {
     scroll-behavior: auto;
   }
   *,
-*::before,
-*::after {
-    -webkit-animation-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
-            animation-iteration-count: 1 !important;
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: rem(16px);
+  line-height: 24px;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+     -moz-text-size-adjust: 100%;
+          text-size-adjust: 100%;
+}
+
+main {
+  padding: 20px;
+}
+
+.app {
+  margin-block: 20px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+}
+.app .card {
+  width: 160.325px;
+  height: 250px;
+  cursor: pointer;
+  background: #102a3f;
+  border-radius: 8px;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.app .card .front {
+  font-size: rem(50px);
+}
+.app .card .back {
+  display: none;
+}
+.app .card.visible .front {
+  display: none;
+}
+.app .card.visible .back {
+  display: block;
 }/*# sourceMappingURL=style.css.map */
