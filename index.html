@@ -1,25 +1,48 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- TODO: glöm ej att byta språk här -->
-  <head>
+<html lang="sv">
+
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/ico" href="/fed22d-js-grundkurs-2-quiz-KUNG3N/favicon.ico" />
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projekt</title>
-    <script type="module" crossorigin src="/fed22d-js-grundkurs-2-quiz-KUNG3N/assets/index.ce21c5e5.js"></script>
-    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-quiz-KUNG3N/assets/index.d3175a9c.css">
-  </head>
-  <body>
-    <main>
-      <div class="app" id="app"></div> <!-- TODO: går bra att radera -->
-      <!-- TODO: skriv din kod här, innan script-taggen -->
-    </main>
+    <link rel="icon" type="image/ico" href="/fed22d-js-grundkurs-2-quiz-KUNG3N/favicon.ico" />
+    
+  <script type="module" crossorigin src="/fed22d-js-grundkurs-2-quiz-KUNG3N/assets/index.d65928e6.js"></script>
+  <link rel="stylesheet" href="/fed22d-js-grundkurs-2-quiz-KUNG3N/assets/index.d8f32154.css">
+</head>
 
+<body>
+    <div class="quiz-container" role="region" aria-label="Quiz Section">
+        <div class="start">
+            <p class="play">LETS PLAY</p>
+            <h1>Start Quiz</h1>
+            <label for="playerName">Enter your name:</label>
+            <input type="text" id="playerName" placeholder="Enter your name" aria-label="Player Name">
+            <button id="start-btn">Start</button>
+            <p class="game">A GAME</p>
+        </div>
+
+        <div class="question-section hidden" role="region" aria-label="Question Section">
+            <div class="countdown" id="countdown"></div>
+            <div class="question" id="question"></div>
+            <div class="options" id="options">
+                <button data-index="0" aria-label="Option 1"></button>
+                <button data-index="1" aria-label="Option 2"></button>
+                <button data-index="2" aria-label="Option 3"></button>
+            </div>
+            <button id="submit">Submit</button>
+        </div>
+
+        <div class="end-section hidden" role="region" aria-label="End Section">
+            <div class="score" id="score"></div>
+            <button id="restart">Restart</button>
+        </div>
+    </div>
     <!-- TODO
-    - Validera HTML (kopiera den renderade HTML-koden): https://validator.w3.org/#validate_by_input
-    - Kontrollera tillgänglighet: https://www.a11yproject.com/checklist/ & Chrome Lighthouse/Firefox Accessibility Tools
-    - Validera genererade CSS: https://jigsaw.w3.org/css-validator/#validate_by_input
+    - Validate HTML (copy the rendered HTML code): https://validator.w3.org/#validate_by_input
+    - Check accessibility: https://www.a11yproject.com/checklist/ & Chrome Lighthouse/Firefox Accessibility Tools
+    - Validate generated CSS: https://jigsaw.w3.org/css-validator/#validate_by_input
     -->
     
-  </body>
+</body>
 </html>
